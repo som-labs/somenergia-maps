@@ -39,8 +39,28 @@
   map.on('load', function () {
     fetch('data/municipios.geojson').then(function (response) {
       return response.json()
-    }).then(addOverlay)
+    }).then(addDataToMunicipios)
   })
+
+  function addDataToMunicipios (municipios) {
+    fetch('data/contratos.json').then(function (response) {
+      response.json().then(function (contratos) {
+        municipios.features = municipios.features.map(function (feature) {
+          var ine = feature.properties.id_ine
+          if (ine in contratos) {
+            feature.properties = Object.assign({}, feature.properties, contratos[ine])
+          } else {
+            var vacios = {
+              '2017-10-01': 0
+            }
+            feature.properties = Object.assign({}, feature.properties, vacios)
+          }
+          return feature
+        })
+        addOverlay(municipios)
+      })
+    })
+  }
 
   function addOverlay (data) {
     map.addSource('municipios', {
@@ -49,18 +69,63 @@
     })
 
     map.addLayer({
-        "id": "municipios",
-        "type": "fill",
-        "source": "municipios",
-        "paint": {
-            "fill-color": "#888888",
-            "fill-opacity": 0.4
+      'id': 'municipios',
+      'type': 'fill-extrusion',
+      'source': 'municipios',
+      'paint': {
+        'fill-extrusion-color': {
+          property: '2017-10-01',
+          stops: [
+            [0, '#fff'],
+            [1, '#ffffcc'],
+            [7, '#ffeda0'],
+            [10, '#fed976'],
+            [70, '#feb24c'],
+            [100, '#fd8d3c'],
+            [700, '#fc4e2a'],
+            [1000, '#e31a1c'],
+            [7000, '#bd0026'],
+            [10000, '#800026']
+          ]
         },
-        "filter": ["==", "$type", "Polygon"]
+        'fill-extrusion-height': {
+          property: '2017-10-01',
+          type: 'exponential',
+          stops: [[0, 1],
+            [10000, 40000]
+          ]
+        }
+      },
+      'filter': ['==', '$type', 'Polygon']
     })
+
+    addInteraction()
   }
 
+  function addInteraction () {
+    // When a click event occurs on a feature in the places layer, open a popup at the
+    // location of the feature, with description HTML from its properties.
+    map.on('click', 'municipios', function (e) {
+      var props = e.features[0].properties
+      var html = '<h4>' + props.rotulo + '</h4>'
+      html += '<div>Contratos: ' + props['2017-10-01'] + '</div>'
 
+      new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(html)
+        .addTo(map)
+    })
+
+    // Change the cursor to a pointer when the mouse is over the places layer.
+    map.on('mouseenter', 'municipios', function () {
+      map.getCanvas().style.cursor = 'pointer'
+    })
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'municipios', function () {
+      map.getCanvas().style.cursor = ''
+    })
+  }
 </script>
 
 </body>

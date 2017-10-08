@@ -13,12 +13,13 @@
   "pitch": 0,
   "sources": {
   },
+  "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
   "layers": [
     {
       "id": "background",
       "type": "background",
       "paint": {
-        "background-color": "rgb(240, 240, 255)"
+        "background-color": "rgb(16, 16, 16)"
       }
     }
   ]
