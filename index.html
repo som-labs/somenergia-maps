@@ -29,7 +29,7 @@
     container: 'map',
     style: 'styles/empty.json',
     hash: true,
-    center: [40, -2],
+    center: [-2, 40],
     zoom: 5
   })
 
@@ -92,11 +92,32 @@
           property: '2017-10-01',
           type: 'exponential',
           stops: [[0, 1],
-            [10000, 40000]
+            [10000, 1000]
           ]
         }
       },
       'filter': ['==', '$type', 'Polygon']
+    })
+
+    map.addLayer({
+      'id': 'labels',
+      'type': 'symbol',
+      'source': 'municipios',
+      'layout': {
+        'text-font': ['Open Sans Regular'],
+        'text-field': '{rotulo}: {2017-10-01}',
+        'symbol-placement': 'point',
+        'text-size': {
+          stops: [
+            [0, 0],
+            [7, 0],
+            [8, 12]
+          ]
+        }
+      },
+      'paint': {
+        "text-color": "#000000"
+      }
     })
 
     addInteraction()
