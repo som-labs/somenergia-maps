@@ -12,7 +12,7 @@
     "municipios": {
       "type": "vector",
       "tiles": [
-        "http://localhost:8080/data/tiles/{z}/{x}/{y}.pbf"
+        "http://fonts.cat/som-mapa/data/tiles/{z}/{x}/{y}.pbf"
       ],
       "attribution": "Base Municipal &copy; <a href='http://centrodedescargas.cnig.es/CentroDescargas/index.jsp'>Instituto Geográfico Nacional</a>",
       "maxzoom": 8
