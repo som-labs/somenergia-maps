@@ -1,0 +1,84 @@
+{
+  "version": 8,
+  "name": "Empty",
+  "metadata": {
+    "mapbox:autocomposite": true
+  },
+  "center":  [-2, 40],
+  "zoom": 5,
+  "bearing": -45,
+  "pitch": 0,
+  "sources": {
+    "municipios": {
+      "type": "vector",
+      "tiles": [
+        "http://localhost:8080/data/tiles/{z}/{x}/{y}.pbf"
+      ],
+      "attribution": "Base Municipal &copy; <a href='http://centrodedescargas.cnig.es/CentroDescargas/index.jsp'>Instituto Geográfico Nacional</a>",
+      "maxzoom": 8
+    }
+  },
+  "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "rgb(16, 16, 16)"
+      }
+    },
+    {
+      "id": "municipios",
+      "type": "fill",
+      "source": "municipios",
+      "source-layer": "contratosgeojson",
+      "paint": {
+        "fill-color": {
+          "property": "2017-10-01",
+          "stops": [
+            [0, "#fff"],
+            [1, "#ffffcc"],
+            [7, "#ffeda0"],
+            [10, "#fed976"],
+            [70, "#feb24c"],
+            [100, "#fd8d3c"],
+            [700, "#fc4e2a"],
+            [1000, "#e31a1c"],
+            [7000, "#bd0026"],
+            [10000, "#800026"]
+          ]
+        }
+      },
+      "filter": ["==", "$type", "Polygon"]
+    },
+    {
+      "id": "municipios-linea",
+      "type": "line",
+      "source": "municipios",
+      "source-layer": "contratosgeojson",
+      "minzoom": 8,
+      "paint": {
+        "line-color": "#ccc"
+      },
+      "filter": ["==", "$type", "Polygon"]
+    },
+    {
+      "id": "labels",
+      "type": "symbol",
+      "source": "municipios",
+      "source-layer": "contratosgeojson",
+      "minzoom": 8,
+      "layout": {
+        "text-font": ["Open Sans Bold"],
+        "text-field": "{rotulo}: {2017-10-01}",
+        "symbol-placement": "point",
+        "text-size": 12
+      },
+      "paint": {
+        "text-color": "#000",
+        "text-halo-color": "#FFF",
+        "text-halo-width": 1
+      }
+    }
+  ]
+}

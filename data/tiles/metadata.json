@@ -1,0 +1,12 @@
+{
+    "name": "tiles/",
+    "description": "tiles/",
+    "version": "2",
+    "minzoom": "0",
+    "maxzoom": "8",
+    "center": "-4.921875,40.444817,8",
+    "bounds": "-9.298634,35.265226,4.327771,43.789939",
+    "type": "overlay",
+    "format": "pbf",
+    "json": "{\"vector_layers\": [ { \"id\": \"contratosgeojson\", \"description\": \"\", \"minzoom\": 0, \"maxzoom\": 8, \"fields\": {\"2017-10-01\": \"Number\", \"id_ine\": \"String\", \"rotulo\": \"String\"} } ] }"
+}
