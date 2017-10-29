@@ -1,41 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'/>
-    <title></title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
-    <script src='lib/mapbox-gl.js'></script>
-    <link href='lib/mapbox-gl.css' rel='stylesheet'/>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
-
-<div id='map'></div>
-
-<script>
-  var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'styles/mapa_municipal.json',
-    hash: true,
-    center: [-2, 40],
-    zoom: 5
-  })
-
-  var nav = new mapboxgl.NavigationControl()
-  map.addControl(nav, 'top-right')
-</script>
-
-</body>
+    <head>
+        <meta charset='utf-8'/>
+        <title>Som Mapa</title>
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no'/>
+        <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+        <link href='css/mapbox-gl.css' rel='stylesheet'/>
+        <link href='css/som-mapa.css' rel='stylesheet'/>
+    </head>
+    <body>
+        <div id='map'></div>
+    </body>
+    <script src='js/mapbox-gl.js'></script>
+    <script src='js/som-map.js'></script>
 </html>
