@@ -12,7 +12,7 @@
     "municipios": {
       "type": "vector",
       "tiles": [
-        "https://som-labs.github.io/som-energia-maps/data/tiles/{z}/{x}/{y}.pbf"
+        "https://som-labs.github.io/somenergia-maps/data/tiles/{z}/{x}/{y}.pbf"
       ],
       "attribution": "Base Municipal &copy; <a href='http://centrodedescargas.cnig.es/CentroDescargas/index.jsp'>Instituto Geográfico Nacional</a>",
       "maxzoom": 8
