@@ -1,18 +1,18 @@
 {
   "version": 8,
-  "name": "Empty",
+  "name": "Mapa Municipal",
   "metadata": {
     "mapbox:autocomposite": true
   },
   "center":  [-2, 40],
   "zoom": 5,
-  "bearing": -45,
+  "bearing": 0,
   "pitch": 0,
   "sources": {
     "municipios": {
       "type": "vector",
       "tiles": [
-        "http://fonts.cat/som-mapa/data/tiles/{z}/{x}/{y}.pbf"
+        "https://som-labs.github.io/som-energia-maps/data/tiles/{z}/{x}/{y}.pbf"
       ],
       "attribution": "Base Municipal &copy; <a href='http://centrodedescargas.cnig.es/CentroDescargas/index.jsp'>Instituto Geográfico Nacional</a>",
       "maxzoom": 8

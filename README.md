@@ -2,4 +2,4 @@
 
 Mapa por municipos.
 
-## Demo: http://fonts.cat/som-mapa/#5/40/-2
+## Demo: https://som-labs.github.io/som-energia-maps/#5/40/-2
