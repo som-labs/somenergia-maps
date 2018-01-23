@@ -18,7 +18,7 @@
       "maxzoom": 8
     }
   },
-  "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
+  "glyphs": "https://som-labs.github.io/somenergia-maps/data/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
